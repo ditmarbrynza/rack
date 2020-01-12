@@ -69,56 +69,34 @@ class App
 
   def make_output_format(formats)
     output_format = ""
-    sort_format = get_sort_format(formats)
 
-    if !sort_format.empty?
-      output_format << "%Y" if sort_format.include?("year")
-      if sort_format.include?("month") && !output_format.empty?
+    if !formats.empty?
+      output_format << "%Y" if formats.include?("year")
+      if formats.include?("month") && !output_format.empty?
         output_format << "-%m" 
-      elsif sort_format.include?("month") && output_format.empty?
+      elsif formats.include?("month") && output_format.empty?
         output_format << "%m"
       end
-      if sort_format.include?("day") && !output_format.empty?
+      if formats.include?("day") && !output_format.empty?
         output_format << "-%d" 
-      elsif sort_format.include?("day") && output_format.empty?
+      elsif formats.include?("day") && output_format.empty?
         output_format << "%d"
       end
       output_format << " " if !output_format.empty?
-      output_format << "%H" if sort_format.include?("hour")
-      if sort_format.include?("minute") && !output_format.empty?
+      output_format << "%H" if formats.include?("hour")
+      if formats.include?("minute") && !output_format.empty?
         output_format << ":%M" 
-      elsif sort_format.include?("minute") && output_format.empty?
+      elsif formats.include?("minute") && output_format.empty?
         output_format << "%M"
       end
-      if sort_format.include?("second") && !output_format.empty?
+      if formats.include?("second") && !output_format.empty?
         output_format << ":%S" 
-      elsif sort_format.include?("second") && output_format.empty?
+      elsif formats.include?("second") && output_format.empty?
         output_format << "%S"
       end
     end
       
     output_format
-  end
-
-  def get_sort_format(formats)
-    sort_format = []
-    formats.each do |format|
-      case format
-      when "year"
-        sort_format << format
-      when "month"
-        sort_format << format
-      when "day"
-        sort_format << format
-      when "hour"
-        sort_format << format
-      when "minute"
-        sort_format << format
-      when "second"
-        sort_format << format
-      end
-    end
-    sort_format
   end
 
 end
