@@ -11,11 +11,10 @@ class TimeFormatter
     'second' => '%S'
   }
 
-  def initialize(formats, time = nil)
+  def initialize(formats)
     @formats = formats.split(",")
     @time = Time.now
     @success = false
-    @valid_time_format = ["year", "month", "day", "hour", "minute", "second"]
     @unknown_time_format = []
   end
 
